@@ -3,7 +3,7 @@
   <main class="content">
     <div class="header-list-page">
       <h1 class="title">Products</h1>
-      <a href="addProduct.php" class="btn-action">Add new Product</a>
+      <a href="?page=addProduct" class="btn-action">Add new Product</a>
     </div>
     <table class="data-grid">
       <tr class="data-row">

@@ -16,7 +16,7 @@
         
       </div>
       <div class="actions-form">
-        <a href="categories.php" class="action back">Back</a>
+        <a href="?page=categories" class="action back">Back</a>
         <input class="btn-submit btn-action"  type="submit" value="Save" />
       </div>
     </form>

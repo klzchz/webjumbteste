@@ -35,7 +35,7 @@
         <textarea id="description" class="input-text"></textarea>
       </div>
       <div class="actions-form">
-        <a href="products.php" class="action back">Back</a>
+        <a href="?page=products" class="action back">Back</a>
         <input class="btn-submit btn-action" type="submit" value="Save Product" />
       </div>
       
