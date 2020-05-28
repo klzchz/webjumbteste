@@ -40,7 +40,7 @@ $capsule->addConnection([
 
    "username" => "root",
 
-   "password" => "root"
+   "password" => ""
 
 ]);
 
