@@ -5,6 +5,8 @@ use App\Models\User;
 
 require "bootstrap.php";
 
+session_start();
+
 
 $user  = new User();
 

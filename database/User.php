@@ -3,9 +3,7 @@
 require "../bootstrap.php";
 
 
-
 use Illuminate\Database\Capsule\Manager as Capsule;
-
 
 
 Capsule::schema()->create('users', function ($table) {
@@ -18,9 +16,7 @@ Capsule::schema()->create('users', function ($table) {
 
        $table->string('password');
 
-       $table->string('userimage')->nullable();
-
-       $table->string('api_key')->nullable()->unique();
+       $table->boolean('admin')->default(false);
 
        $table->rememberToken();
 
