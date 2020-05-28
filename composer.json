@@ -9,6 +9,9 @@
  
         "classmap": [
   
+        ],
+        "files": [
+            "app/Helpers/functions.php"
         ]
   
     }
