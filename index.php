@@ -12,6 +12,8 @@ $user  = new User();
 
 echo json_encode($user->all());
 
+header('Location: dashboard.php');
+
 
 // $user = User::Create([    'name' => "Kshiitj Soni",    'email' => "kshitij206@gmail.com",    'password' => password_hash("1234",PASSWORD_BCRYPT), ]);
 
