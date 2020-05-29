@@ -6,7 +6,7 @@ use App\Models\Product;
   $path = "../app/http/controllers/products/crud/delete.php?id=";
 
   $product = new Product();
-  $products = $product->all();
+  $products = $product->with('categories')->get();
 
 ?>
   <!-- Main Content -->
@@ -27,6 +27,7 @@ use App\Models\Product;
     </div>
     <table class="data-grid">
       <tr class="data-row">
+
         <th class="data-grid-th">
             <span class="data-grid-cell-content">Name</span>
         </th>
@@ -44,38 +45,47 @@ use App\Models\Product;
         </th>
 
         <th class="data-grid-th">
-            <span class="data-grid-cell-content">Actions</span>
+            <span class="data-grid-cell-content" width="200">Actions</span>
         </th>
       </tr>
+      <?php foreach ($products as $key => $product) {?>
+      
+      
       <tr class="data-row">
         <td class="data-grid-td">
-           <span class="data-grid-cell-content">Product 1 Name</span>
+           <span class="data-grid-cell-content"><?= $product->name ?></span>
         </td>
       
         <td class="data-grid-td">
-           <span class="data-grid-cell-content">SKU1</span>
+           <span class="data-grid-cell-content"><?= $product->code ?></span>
         </td>
 
         <td class="data-grid-td">
-           <span class="data-grid-cell-content">R$ 19,90</span>
+           <span class="data-grid-cell-content">R$ <?= number_format($product->price,2,',','.') ?></span>
         </td>
 
         <td class="data-grid-td">
-           <span class="data-grid-cell-content">100</span>
+           <span class="data-grid-cell-content"><?= $product->qtd ?></span>
         </td>
 
         <td class="data-grid-td">
-           <span class="data-grid-cell-content">Category 1 <Br />Category 2</span>
+           <span class="data-grid-cell-content">
+          <?php
+            foreach ($product->categories as $key => $category) {
+              echo " <small>".$category->name."</small> <br/>";
+            }
+          ?>
+           </span>
         </td>
       
         <td class="data-grid-td">
           <div class="actions">
-            <div class="action edit"><span>Edit</span></div>
-            <div class="action delete"><span>Delete</span></div>
+            <a href="/?page=updateProduct&id=<?=$product->id?>" class="btn btn-warning"><span>Edit</span></a>
+            <a onclick="confirm('Deseja realmente excluir ?')" href="<?= $path.$product->id?>" class="btn btn-danger"><span>Delete</span></a>
           </div>
         </td>
       </tr>
-    
+      <?php }?>
     </table>
   </main>
   <!-- Main Content -->

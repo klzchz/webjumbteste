@@ -68,6 +68,7 @@ class ProductController  {
    
            if($product->update($dataForm)) 
            {
+            $product->categories()->sync($request['category_id']);
                $_SESSION['msg'] = "Sucesso ao atualizar Produto";
              
            }else{
