@@ -11,7 +11,7 @@ use App\Models\Category;
   <main class="content">
     <h1 class="title new-item">New Product</h1>
     
-    <form method="POST" action="<?= $path?>">
+    <form method="POST" action="<?= $path?>" enctype="multipart/form-data">
       <div class="input-field">
         <label for="sku" class="label">Product SKU</label>
         <input type="text" id="sku" name="code" class="input-text" /> 
@@ -35,6 +35,11 @@ use App\Models\Category;
           <option value="<?=$value->id?>" ><?=$value->name?></option>
            <?php }?>
         </select>
+      </div>
+
+      <div class="input-field">
+        <label for="img" class="label">Foto</label>
+        <input type="file" id="img" name="img" class="input-text"/>
       </div>
       <div class="input-field">
         <label for="description" class="label">Description</label>

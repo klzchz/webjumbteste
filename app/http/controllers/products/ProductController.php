@@ -28,7 +28,22 @@ class ProductController  {
             'qtd'=>$request['qtd']
             
         ];
-        
+
+        /*Fazendo Upload dos Arquivos*/
+        $uploaddir = '../../../../../assets/uploads/';
+
+        if(isset($_FILES['img']))
+        {
+            $uploadfile = $uploaddir . basename($_FILES['img']['name']);
+
+            if(move_uploaded_file($_FILES['img']['tmp_name'], $uploadfile))
+        {
+            $dataForm['img'] =   $_FILES['img']['name'];
+        }
+    
+            
+        }
+
         if($product = $this->product->create($dataForm)) 
         {   
            
@@ -38,16 +53,7 @@ class ProductController  {
         }else{
             $_SESSION['msg'] = "Erro ao cadastrar Produto";
         }
-        /*Fazendo Upload dos Arquivos*/
-        // $uploaddir = '../../../assets/uploads/';
 
-        // $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
-       
-        
-        // if(move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile))
-        // {
-        //     $dataForm['img'] =   basename($_FILES['userfile']['name']);
-        // }
 
 
     }
@@ -79,12 +85,17 @@ class ProductController  {
     {
         //deleta produto
         $product = $this->product->find($id);
+        $uploaddir = '../../../../../assets/uploads/';
 
         if(!$product) {
             $_SESSION['msg'] = "Esse produto não existe";
         }
 
-        
+        if(isset($product->img) && file_exists($uploaddir.$product->img))
+        {
+           
+            unlink($uploaddir.$product->img);
+        }
         if($product->delete()) 
         {
             $_SESSION['msg'] = "Sucesso ao deletar Produto";
@@ -92,6 +103,18 @@ class ProductController  {
             $_SESSION['msg'] = "Erro ao deletar Produto";
         }
         
+    }
+
+    public function deleteImage($id)
+    {
+        $product = $this->product->find($id);
+        $uploaddir = '../../../../../assets/uploads/';
+
+        if(isset($product->img) && file_exists($uploaddir.$product->img))
+        {
+           
+            unlink($uploaddir.$product->img);
+        }
     }
 
 }
