@@ -22,7 +22,7 @@ use App\Models\Category;
       </div>
       <div class="input-field">
         <label for="price" class="label">Price</label>
-        <input type="number" id="price" name="price" class="input-text" /> 
+        <input type="number" id="price" name="price" class="input-text" step="0.01" /> 
       </div>
       <div class="input-field">
         <label for="quantity" class="label">Quantity</label>

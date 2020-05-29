@@ -37,7 +37,7 @@ use App\Models\Category;
       </div>
       <div class="input-field">
         <label for="price" class="label">Price</label>
-        <input type="number" id="price" name="price" class="input-text" value="<?= $product->price ?>" /> 
+        <input type="number" id="price" name="price" class="input-text" step="0.01" value="<?= $product->price ?>" /> 
       </div>
       <div class="input-field">
         <label for="quantity" class="label">Quantity</label>

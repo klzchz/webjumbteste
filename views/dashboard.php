@@ -22,7 +22,7 @@ use App\Models\Product;
         </div>
         <div class="product-info">
           <div class="product-name"><span><?= $product->name?></span></div>
-          <div class="product-price"><span class="special-price"><?= $product->qtd ?> available</span> <span>R$ <?=$product->price?></span></div>
+          <div class="product-price"><span class="special-price"><?= $product->qtd ?> available</span> <span>R$ <?=number_format($product->price,2,',','.')?></span></div>
         </div>
       </li>
       <li>
