@@ -1,9 +1,19 @@
+<?php
 
+use App\Models\Product;
+
+  $product = new Product();
+  $products = $product->all();
+
+?>
   <!-- Main Content -->
   <main class="content">
     <div class="header-list-page">
       <h1 class="title">Products</h1>
-      <a href="?page=addProduct" class="btn-action">Add new Product</a>
+      <div class="col-md-2">
+        <a href="?page=addProduct"  class="btn btn-primary btn-block">Add new Product</a>
+      </div>
+      
     </div>
     <table class="data-grid">
       <tr class="data-row">
@@ -55,34 +65,7 @@
           </div>
         </td>
       </tr>
-      <tr class="data-row">
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">Product 2 Name</span>
-        </td>
-      
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">SKU2</span>
-        </td>
-
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">R$ 59,90</span>
-        </td>
-
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">999</span>
-        </td>
-
-        <td class="data-grid-td">
-           <span class="data-grid-cell-content">Category 1</span>
-        </td>
-      
-        <td class="data-grid-td">
-          <div class="actions">
-            <div class="action edit"><span>Edit</span></div>
-            <div class="action delete"><span>Delete</span></div>
-          </div>
-        </td>
-      </tr>
+    
     </table>
   </main>
   <!-- Main Content -->

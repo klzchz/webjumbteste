@@ -1,18 +1,28 @@
-
+<?php 
+  session_start();
+  $path = "../app/http/controllers/categories/crud/create.php";
+?>
 <!-- Header -->
   <!-- Main Content -->
   <main class="content">
+    <?php 
+      if(isset($_SESSION['msg']))
+      {
+          echo $_SESSION['msg'];
+      }
+      unset($_SESSION['msg']);
+    ?>
     <h1 class="title new-item">New Category</h1>
     
-    <form>
+    <form method="POST" action="<?=$path?>">
       <div class="input-field">
         <label for="category-name" class="label">Category Name</label>
-        <input type="text" id="category-name" class="input-text" />
+        <input type="text" name="name" id="category-name" class="input-text" />
         
       </div>
       <div class="input-field">
         <label for="category-code" class="label">Category Code</label>
-        <input type="text" id="category-code" class="input-text" />
+        <input type="text" name="code" id="category-code" class="input-text" />
         
       </div>
       <div class="actions-form">

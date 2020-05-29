@@ -8,10 +8,10 @@
         },
  
         "classmap": [
-  
+            
         ],
         "files": [
-            "app/Helpers/functions.php"
+            "app/Helpers/Helper.php"
         ]
   
     }
