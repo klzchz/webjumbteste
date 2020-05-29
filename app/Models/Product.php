@@ -14,13 +14,12 @@ class Product extends Eloquent
         'price',
         'description',
         'qtd',
-        'img',
-        'category_id'
+        'img'
     ];
 
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(category::class,'category_id');
+        return $this->belongsToMany(Category::class);
     }
 
 }

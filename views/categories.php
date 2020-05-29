@@ -1,9 +1,9 @@
 <?php
-
-  session_start();
-  $path = "../app/http/controllers/categories/crud/delete.php?id=";
   
 use App\Models\Category;
+
+session_start();
+$path = "../app/http/controllers/categories/crud/delete.php?id=";
 
   $category = new Category();
   $categories = $category->all();

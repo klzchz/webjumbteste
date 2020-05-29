@@ -2,12 +2,22 @@
 
 use App\Models\Product;
 
+  session_start();
+  $path = "../app/http/controllers/products/crud/delete.php?id=";
+
   $product = new Product();
   $products = $product->all();
 
 ?>
   <!-- Main Content -->
   <main class="content">
+  <?php 
+      if(isset($_SESSION['msg']))
+      {
+          echo $_SESSION['msg'];
+      }
+      unset($_SESSION['msg']);
+    ?>
     <div class="header-list-page">
       <h1 class="title">Products</h1>
       <div class="col-md-2">

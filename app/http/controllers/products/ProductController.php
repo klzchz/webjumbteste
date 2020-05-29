@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\http\controllers;
+namespace App\http\controllers\products;
 
 use App\Models\Product;
-use App\http\Controller\Controller;
 
 
-class ProductController extends Controller {
+
+class ProductController  {
 
     private $product;
     
@@ -17,37 +17,79 @@ class ProductController extends Controller {
         $this->product = $product;
     }
 
-    public function store()
+    public function store($request)
     {   
 
         $dataForm = [
-            'name'=>$_POST['name'],
-            'code'=>$_POST['code'],
-            'price'=>$_POST['price'],
-            'description'=>$_POST['description'],
-            'qtd'=>$_POST['qtd']
+            'name'=>$request['name'],
+            'code'=>$request['code'],
+            'price'=>$request['price'],
+            'description'=>$request['description'],
+            'qtd'=>$request['qtd']
             
         ];
-
+        
+        if($product = $this->product->create($dataForm)) 
+        {   
+           
+           $product->categories()->attach($request['category_id']);
+          
+            $_SESSION['msg'] = "Sucesso ao cadastrar Produto";
+        }else{
+            $_SESSION['msg'] = "Erro ao cadastrar Produto";
+        }
         /*Fazendo Upload dos Arquivos*/
-        $uploaddir = '../../../assets/uploads/';
+        // $uploaddir = '../../../assets/uploads/';
 
-        $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+        // $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
        
         
-        if(move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile))
-        {
-            $dataForm['img'] =   basename($_FILES['userfile']['name']);
+        // if(move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile))
+        // {
+        //     $dataForm['img'] =   basename($_FILES['userfile']['name']);
+        // }
+
+
+    }
+    public function update($id,$request)
+    {
+            
+        $product = $this->product->find($id);
+     
+        if(!$product) {
+            $_SESSION['msg'] = "Esse produto não existe";
+        }
+     
+        $dataForm = [
+            'name' => $request['name'],
+            'code'=>$request['code'],
+           ];
+         
+   
+           if($product->update($dataForm)) 
+           {
+               $_SESSION['msg'] = "Sucesso ao atualizar Produto";
+             
+           }else{
+               $_SESSION['msg'] = "Erro ao atualizar Produto";
+           }
+    }
+    public function destroy($id)
+    {
+        //deleta produto
+        $product = $this->product->find($id);
+
+        if(!$product) {
+            $_SESSION['msg'] = "Esse produto não existe";
         }
 
-
-    }
-    public function update($id)
-    {
-
-    }
-    public function delete($id)
-    {
+        
+        if($product->delete()) 
+        {
+            $_SESSION['msg'] = "Sucesso ao deletar Produto";
+        }else{
+            $_SESSION['msg'] = "Erro ao deletar Produto";
+        }
         
     }
 

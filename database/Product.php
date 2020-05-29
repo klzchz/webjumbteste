@@ -12,8 +12,6 @@ Capsule::schema()->create('products', function ($table) {
 
        $table->increments('id');
 
-       $table->integer('category_id')->unsigned();
-
        $table->string('name');
        
        $table->string('code');
@@ -26,10 +24,6 @@ Capsule::schema()->create('products', function ($table) {
        
        $table->string('img')->nullable();
 
-       $table->foreign('category_id')
-                ->references('id')
-                ->on('categories')
-                ->onDelete('cascade');
 
        $table->timestamps();
 

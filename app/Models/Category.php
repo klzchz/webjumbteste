@@ -20,11 +20,11 @@ class Category extends Eloquent
 
    ];
 
-   /*Definindo o Relacionamento Inverso*/
+   /*Definindo o Relacionamento de Muitos Para Muitos*/
 
    public function products()
    {
-        return $this->hasMany(Product::class,'category_id');
+        return $this->belongsToMany(Product::class);
    }
 
  }
