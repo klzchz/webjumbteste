@@ -66,9 +66,13 @@ class ProductController  {
         }
      
         $dataForm = [
-            'name' => $request['name'],
+            'name'=>$request['name'],
             'code'=>$request['code'],
-           ];
+            'price'=>$request['price'],
+            'description'=>$request['description'],
+            'qtd'=>$request['qtd']
+            
+        ];
            /*Fazendo Upload dos Arquivos*/
         $uploaddir = '../../../../../assets/uploads/';
 
