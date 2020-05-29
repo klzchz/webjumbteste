@@ -34,28 +34,31 @@ class CategoryController  {
            
 
     }
-    public function update($id)
+    public function update($id,$request)
     {   
         //Atualiza Categoria
+        
         $category = $this->category->find($id);
-
+     
         if(!$category) {
             $_SESSION['msg'] = "Essa categoria não existe";
         }
-
+     
         $dataForm = [
-            'name' => $_POST['name'],
-            'code'=>$_POST['code'],
+            'name' => $request['name'],
+            'code'=>$request['code'],
            ];
+         
    
            if($category->update($dataForm)) 
            {
                $_SESSION['msg'] = "Sucesso ao atualizar Categoria";
+             
            }else{
                $_SESSION['msg'] = "Erro ao atualizar Categoria";
            }
            
-           header('Location: ?page=categories');
+           
     }
     public function destroy($id)
     {   

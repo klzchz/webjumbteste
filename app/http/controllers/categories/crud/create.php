@@ -11,7 +11,6 @@ $c = new CategoryController($category);
 
 $request = $_POST;
 
-
 $c->store($request);
 
 header('Location: /?page=categories');
