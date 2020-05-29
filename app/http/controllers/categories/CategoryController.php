@@ -12,13 +12,13 @@ class CategoryController  {
     
     public function __construct(Category $category)
     {   
-      
+        session_start();
         $this->category = $category;
     }
 
     public function store($request)
     {  
-        session_start();
+        
         $dataForm = [
             'name' => $request['name'],
             'code'=>$request['code']
@@ -73,7 +73,7 @@ class CategoryController  {
         }else{
             $_SESSION['msg'] = "Erro ao deletar Categoria";
         }
-        header('Location: ?page=categories');
+        
         
     }
 

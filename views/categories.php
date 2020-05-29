@@ -1,6 +1,7 @@
 <?php
 
   session_start();
+  $path = "../app/http/controllers/categories/crud/delete.php?id=";
 use App\Models\Category;
 
   $category = new Category();
@@ -50,8 +51,8 @@ use App\Models\Category;
       
         <td class="data-grid-td">
           <div class="actions">
-            <div class="btn btn-warning"><span>Edit</span></div>
-            <div class="btn btn-danger"><span>Delete</span></div>
+            <a  class="btn btn-warning"><span>Edit</span></a>
+            <a onclick="confirm('Você realmente deseja excluir ?')" href="<?= $path.$value->id ?>" class="btn btn-danger"><span>Delete</span></a>
           </div>
         </td>
       </tr>
