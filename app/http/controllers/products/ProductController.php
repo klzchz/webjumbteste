@@ -21,11 +21,11 @@ class ProductController  {
     {   
 
         $dataForm = [
-            'name'=>$request['name'],
-            'code'=>$request['code'],
-            'price'=>$request['price'],
-            'description'=>$request['description'],
-            'qtd'=>$request['qtd']
+            'name'=>trim( strip_tags($request['name'])),
+            'code'=>trim( strip_tags($request['code'])),
+            'price'=>trim( strip_tags($request['price'])),
+            'description'=>trim( strip_tags($request['description'])),
+            'qtd'=>trim( strip_tags($request['qtd']))
             
         ];
 
@@ -66,11 +66,11 @@ class ProductController  {
         }
      
         $dataForm = [
-            'name'=>$request['name'],
-            'code'=>$request['code'],
-            'price'=>$request['price'],
-            'description'=>$request['description'],
-            'qtd'=>$request['qtd']
+            'name'=>trim( strip_tags($request['name'])),
+            'code'=>trim( strip_tags($request['code'])),
+            'price'=>trim( strip_tags($request['price'])),
+            'description'=>trim( strip_tags($request['description'])),
+            'qtd'=>trim( strip_tags($request['qtd']))
             
         ];
            /*Fazendo Upload dos Arquivos*/

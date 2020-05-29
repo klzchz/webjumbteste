@@ -11,13 +11,13 @@ use App\Models\Category;
         header('Location: ?page=categories');
 
     $path = "../app/http/controllers/categories/crud/update.php?id=".$_GET['id'];
-    $name = "<input type='text' name='name' id='category-name' class='input-text' value='{$category->name}' />";
-    $code = "<input type='text' name='code' id='category-code' class='input-text'  value='{$category->code}' />";
+    $name = "<input type='text' name='name' id='category-name' class='input-text' value='{$category->name}'required />";
+    $code = "<input type='text' name='code' id='category-code' class='input-text'  value='{$category->code}'required />";
     
   }else
   {
-    $name = "<input type='text' name='name' id='category-name' class='input-text' />";
-    $code = "<input type='text' name='code' id='category-code' class='input-text' />";
+    $name = "<input type='text' name='name' id='category-name' class='input-text' required />";
+    $code = "<input type='text' name='code' id='category-code' class='input-text'  requiredc/>";
     $path = "../app/http/controllers/categories/crud/create.php";
   }
   
@@ -27,6 +27,13 @@ use App\Models\Category;
   <main class="content">
 
     <h1 class="title new-item">New Category</h1>
+    <?php 
+      if(isset($_SESSION['msg']))
+      {
+          echo $_SESSION['msg'];
+      }
+      unset($_SESSION['msg']);
+    ?>
     
     <form method="POST" action="<?=$path?>">
       <div class="input-field">

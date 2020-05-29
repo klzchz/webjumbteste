@@ -15,6 +15,13 @@ use App\Models\Category;
   <!-- Main Content -->
   <main class="content">
     <h1 class="title new-item">New Product</h1>
+    <?php 
+      if(isset($_SESSION['msg']))
+      {
+          echo $_SESSION['msg'];
+      }
+      unset($_SESSION['msg']);
+    ?>
     <?php
     if($product->img)
     {
@@ -29,22 +36,22 @@ use App\Models\Category;
     <form method="POST" action="<?= $path?>" enctype="multipart/form-data">
       <div class="input-field">
         <label for="sku" class="label">Product SKU</label>
-        <input type="text" id="sku" name="code" class="input-text" value="<?= $product->code ?>" /> 
+        <input type="text" id="sku" name="code" class="input-text" value="<?= $product->code ?>"required   /> 
       </div>
       <div class="input-field">
         <label for="name" class="label">Product Name</label>
-        <input type="text" id="name" name="name" class="input-text" value="<?= $product->name ?>" /> 
+        <input type="text" id="name" name="name" class="input-text" value="<?= $product->name ?>" required/> 
       </div>
       <div class="input-field">
         <label for="price" class="label">Price</label>
-        <input type="number" id="price" name="price" class="input-text" step="0.01" value="<?= $product->price ?>" /> 
+        <input type="number" id="price" name="price" class="input-text" step="0.01" value="<?= $product->price ?>" required/> 
       </div>
       <div class="input-field">
         <label for="quantity" class="label">Quantity</label>
-        <input type="number" id="quantity" name="qtd" class="input-text" value="<?= $product->qtd ?>" /> 
+        <input type="number" id="quantity" name="qtd" class="input-text" value="<?= $product->qtd ?>" required/> 
       </div>
       <div class="input-field">
-        <label for="category" class="label">Categories</label>
+        <label for="category" class="label">Categories</label required>
         <select multiple id="category" name="category_id[]" class="input-text">
            <?php foreach ($categories as $key => $value) { ?>
           <option <?php foreach ($product->categories as $key => $v) {
@@ -67,7 +74,7 @@ use App\Models\Category;
       ?>
       <div class="input-field">
         <label for="description" class="label">Description</label>
-        <textarea id="description" name="description" class="input-text"><?=$product->description?></textarea>
+        <textarea id="description" name="description" class="input-text" required><?=$product->description?></textarea>
       </div>
       <div class="actions-form">
         <a href="?page=products" class="action back">Back</a>

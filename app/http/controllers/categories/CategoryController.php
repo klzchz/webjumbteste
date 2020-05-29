@@ -20,8 +20,8 @@ class CategoryController  {
     {  
         
         $dataForm = [
-            'name' => $request['name'],
-            'code'=>$request['code']
+            'name' => trim(strip_tags($request['name'])),
+            'code'=>trim( strip_tags($request['code']))
            ];
            
            if($this->category->create($dataForm)) 
@@ -45,8 +45,8 @@ class CategoryController  {
         }
      
         $dataForm = [
-            'name' => $request['name'],
-            'code'=>$request['code'],
+            'name' => trim(strip_tags($request['name'])),
+            'code'=>trim( strip_tags($request['code']))
            ];
          
    
