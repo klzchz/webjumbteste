@@ -15,8 +15,18 @@ use App\Models\Category;
   <!-- Main Content -->
   <main class="content">
     <h1 class="title new-item">New Product</h1>
-    
-    <form method="POST" action="<?= $path?>">
+    <?php
+    if($product->img)
+    {
+      echo "<div style='width:30%;float:right;' class='input-field card mr-4'>
+      <img   class='card-img' src='../assets/uploads/{$product->img}' alt='Card image cap'>
+      <small class='text-danger'><a href='../app/http/controllers/products/crud/deleteImage.php?id={$product->id}'>Remover</a></small>
+     </div>"
+     
+     ;
+    }
+    ?>
+    <form method="POST" action="<?= $path?>" enctype="multipart/form-data">
       <div class="input-field">
         <label for="sku" class="label">Product SKU</label>
         <input type="text" id="sku" name="code" class="input-text" value="<?= $product->code ?>" /> 
@@ -44,6 +54,17 @@ use App\Models\Category;
            <?php }?>
         </select>
       </div>
+
+      <?php
+      if(!$product->img)
+      {
+        echo '<div class="input-field">
+        <label for="img" class="label">Foto</label>
+        <input type="file" id="img" name="img" class="input-text"/>
+      </div>';
+      }
+    
+      ?>
       <div class="input-field">
         <label for="description" class="label">Description</label>
         <textarea id="description" name="description" class="input-text"><?=$product->description?></textarea>

@@ -40,7 +40,6 @@ class ProductController  {
         {
             $dataForm['img'] =   $_FILES['img']['name'];
         }
-    
             
         }
 
@@ -70,7 +69,19 @@ class ProductController  {
             'name' => $request['name'],
             'code'=>$request['code'],
            ];
-         
+           /*Fazendo Upload dos Arquivos*/
+        $uploaddir = '../../../../../assets/uploads/';
+
+        if(isset($_FILES['img']))
+        {
+            $uploadfile = $uploaddir . basename($_FILES['img']['name']);
+
+            if(move_uploaded_file($_FILES['img']['tmp_name'], $uploadfile))
+        {
+            $dataForm['img'] =   $_FILES['img']['name'];
+        }
+            
+        }
    
            if($product->update($dataForm)) 
            {
@@ -115,6 +126,8 @@ class ProductController  {
            
             unlink($uploaddir.$product->img);
         }
+        $product->img = '';
+        $product->save();
     }
 
 }
