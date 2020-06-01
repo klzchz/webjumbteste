@@ -4,7 +4,7 @@ Eu Acabei me preucupando em montar minha estrutra php do zero como eu trabalho,
 além do crud eu quis focar nessa parte então simulei um MVC onde usei o Eloquent e 
 criei minha propria estrutura !
 
-PS: Me perdi no prazo e  acobou nao saindo como eu queria , mas ficou legal o modelo
+PS: Me perdi no prazo e  acabou nao saindo como eu queria !
 </small>
 
 <h4>Clone o repositório</h4>
